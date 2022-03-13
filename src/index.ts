@@ -14,7 +14,7 @@ async function deploy() {
   const removedKeys = allKeys
   await group('Upload', () => onUpload(folder, diffedFiles))
   if (getBooleanInput('delete-removed')) {
-    await group('Delete: Removed', () => onDeleteRemoved(removedKeys))
+    await group('Delete Removed', () => onDeleteRemoved(removedKeys))
   }
   if (getBooleanInput('distribution-id')) {
     await group('Refresh CloudFront', onRefreshCloudFront)
