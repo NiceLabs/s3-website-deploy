@@ -27,7 +27,7 @@ async function onUpload(folder: string, diffedFiles: string[]) {
   for (const filePath of diffedFiles) {
     info(`Upload File: ${filePath}`)
     await client.putObject(await readFile(path.join(folder, filePath)), {
-      ACL: 'public-read',
+      ACL: 'private',
     })
   }
 }
