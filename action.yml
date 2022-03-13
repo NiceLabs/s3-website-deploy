@@ -1,0 +1,30 @@
+name: S3 Website Deploy
+description: Deploy a static website to Amazon S3 and invalidate CloudFront distribution
+author: NiceLabs
+
+inputs:
+  folder:
+    description: The folder to upload
+    required: true
+  bucket:
+    description: The destination bucket
+    required: true
+  delete-removed:
+    description: Removes files in S3, that are not available in the local copy of the directory
+    required: true
+    default: 'true'
+  distribution-id:
+    description: The CloudFront Distribution ID to invalidate
+    required: false
+  invalidation-paths:
+    description: The CloudFront Distribution path(s) to invalidate
+    required: true
+    default: '/*'
+
+branding:
+  color: blue
+  icon: upload-cloud
+
+runs:
+  using: node16
+  main: dist/index.js
